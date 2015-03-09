@@ -1,2 +1,3 @@
 # CCModalTransition
-Custom Present Animation
+
+![](https://raw.githubusercontent.com/cocoa-chen/CCModalTransition/master/screenshot.gif)
