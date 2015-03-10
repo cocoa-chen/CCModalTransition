@@ -35,8 +35,14 @@
     DetailViewController *detailVc = [[DetailViewController alloc] init];
     detailVc.view.frame = CGRectMake(0, 80, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 80);
     
-    self.animator = [[CCModalTransitionAnimator alloc] init];
-    self.animator.modalViewController = detailVc;
+    self.animator = [[CCModalTransitionAnimator alloc] initWithModalViewController:detailVc];
+//    self.animator.modalViewController = detailVc;
+    self.animator.dragable = YES;
+    self.animator.canTapToDismiss = YES;
+    self.animator.dismissBlock = ^(BOOL finished) {
+        //drag to dismiss finished
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    };
     
     detailVc.transitioningDelegate = self.animator;
     [self presentViewController:detailVc animated:YES completion:nil];
